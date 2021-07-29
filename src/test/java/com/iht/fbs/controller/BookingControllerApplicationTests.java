@@ -29,7 +29,7 @@ public class BookingControllerApplicationTests {
  
 
 	@Test
-	public void testFindBookingList1() {
+	public void testFindBookingList() {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/booking/findBookingList",

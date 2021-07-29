@@ -44,6 +44,7 @@ public class Booking implements Serializable {
 	private Date journeyFromDate;
 	@Temporal(TemporalType.DATE)
 	private Date journeyToDate;
+	private String departureTime;
 	private String mealOnePreference;
 	private String mealRoundPreference;
 	private Double price;
@@ -60,6 +61,26 @@ public class Booking implements Serializable {
 	@JoinColumn(referencedColumnName = "booking_id")
 	//@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Passengers> passengerList;
+
+	public Booking() {
+		super();
+	}
+
+	public String getDepartureTime() {
+		return departureTime;
+	}
+
+	public void setDepartureTime(String departureTime) {
+		this.departureTime = departureTime;
+	}
+
+	public String getDepature() {
+		return depature;
+	}
+
+	public void setDepature(String depature) {
+		this.depature = depature;
+	}
 
 	public Long getBookingId() {
 		return bookingId;

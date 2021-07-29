@@ -28,4 +28,6 @@ public interface ScheduleFlightRepository extends JpaRepository<ScheduledFlight,
 	@Query(value = "SELECT * FROM scheduled_flight sc where sc.source_airport=?1 and sc.destination=?2  ORDER BY schedule_flight_id;", nativeQuery = true)
 	public List<ScheduledFlight> findFlightByLocation(String source, String desination);
 
+	public ScheduledFlight findByFlightId(Long flightId);
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.iht.fbs.model.Location;
+import com.iht.fbs.repository.LocationRepository;
 
 @Service
 public class LocationServiceImpl implements LocationService {

@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import com.iht.fbs.FlightBookingSystemApplication;
 
 @SpringBootTest(classes = FlightBookingSystemApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SchduleFlightControllerApplicationTests {
+ class SchduleFlightControllerApplicationTests {
 
 	@Autowired
 	private TestRestTemplate restTemplate;
@@ -30,7 +30,7 @@ public class SchduleFlightControllerApplicationTests {
 	 
 
 	@Test
-	public void testSchdeleFlightList1() {
+	 void testSchdeleFlightList() {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 		ResponseEntity<String> response = restTemplate.exchange(

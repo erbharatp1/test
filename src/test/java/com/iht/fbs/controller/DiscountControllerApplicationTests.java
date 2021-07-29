@@ -13,9 +13,17 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
 import com.iht.fbs.FlightBookingSystemApplication;
+import com.iht.fbs.model.Discount;
+import com.iht.fbs.repository.DiscountRepository;
+import com.iht.fbs.service.DiscountService;
 
 @SpringBootTest(classes = FlightBookingSystemApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class DiscountControllerApplicationTests {
+class DiscountControllerApplicationTests {
+
+	@Autowired
+	DiscountService service;
+	@Autowired
+	DiscountRepository repo;
 
 	@Autowired
 	private TestRestTemplate restTemplate;
@@ -27,8 +35,9 @@ public class DiscountControllerApplicationTests {
 		return "http://localhost:" + port;
 	}
 
+	 
 	@Test
-	public void testFindDiscountList1() {
+	void testFindDiscountList() {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/discount/findDiscountList",

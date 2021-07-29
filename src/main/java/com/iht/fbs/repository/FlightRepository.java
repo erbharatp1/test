@@ -21,8 +21,8 @@ import com.iht.fbs.model.Flight;
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 	public static final String DELETE_BY_FLIGHT_ID = "DELETE FROM Flight WHERE id = ?1";
 	public static final String UPDATE_BY_ID = "Update Flight el SET el.activeStatus =:activeStatus WHERE el.id=:id";
-	public static final String FIND_FLIGHT_BY_SOURCE = "SELECT fl.id,fl.carrier_name,  sf.source_airport,sf.destination, sf.departure, fl.price, sf.departure_time  FROM fly_db.flight fl left join fly_db.scheduled_flight sf on fl.id = sf.flight_id where sf.source_airport=?1 and sf.destination=?2 and sf.departure  between ?3  and '2021-10-12'  ";
-
+	//public static final String FIND_FLIGHT_BY_SOURCE = "SELECT fl.id,fl.carrier_name,  sf.source_airport,sf.destination, sf.departure, fl.price, sf.departure_time  FROM fly_db.flight fl left join fly_db.scheduled_flight sf on fl.id = sf.flight_id where sf.source_airport=?1 and sf.destination=?2 and sf.departure  between ?3  and '2021-10-12'  ";
+	public static final String FIND_FLIGHT_BY_SOURCE = "SELECT fl.id,fl.carrier_name,  sf.source_airport,sf.destination, sf.departure, fl.price, sf.departure_time  FROM flight fl left join scheduled_flight sf on fl.id = sf.flight_id where fl.active_status='AC' and sf.source_airport=?1 and sf.destination=?2 and sf.departure  between ?3  and '2021-10-12'  ";
 	@Query(value = FIND_FLIGHT_BY_SOURCE, nativeQuery = true)
 	public List<Object[]> findFlightBySource(String source, String destnation, String departure);
 

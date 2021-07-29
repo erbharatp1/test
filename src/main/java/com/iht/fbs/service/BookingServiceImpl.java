@@ -13,7 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.iht.fbs.exception.ResourceNotFoundException;
 import com.iht.fbs.model.Booking;
+import com.iht.fbs.model.ScheduledFlight;
 import com.iht.fbs.repository.BookingRepository;
+import com.iht.fbs.repository.ScheduleFlightRepository;
 
 /**
  * @author Bharat
@@ -25,9 +27,12 @@ public class BookingServiceImpl implements BookingService {
 	@Autowired
 	private BookingRepository bookingRepository;
 
+	@Autowired
+	private ScheduleFlightRepository scheduleFlightRepository;
+
 	@Override
 	public Booking findBookingId(Long bookingId) throws ResourceNotFoundException {
-		// TODO Auto-generated method stub
+
 		return bookingRepository.findById(bookingId)
 				.orElseThrow(() -> new ResourceNotFoundException("booking not found for this id :: " + bookingId));
 
@@ -44,6 +49,7 @@ public class BookingServiceImpl implements BookingService {
 			Long generateCode = (long) rand_int1;
 			booking.setPnrNo(generateCode);
 		}
+ 
 		return bookingRepository.save(booking);
 	}
 
@@ -63,7 +69,7 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	@Transactional
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+
 		bookingRepository.deleteById(id);
 	}
 

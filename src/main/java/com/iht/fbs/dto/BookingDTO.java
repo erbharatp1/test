@@ -38,6 +38,10 @@ public class BookingDTO implements Serializable {
 	private Long noOfPassengers;
 	private Date createdDate;
 	private List<PassengersDTO> passengerList;
+	
+	public BookingDTO() {
+		super();
+	}
 	public Long getBookingId() {
 		return bookingId;
 	}

@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iht.fbs.adaptor.BookingAdaptor;
-import com.iht.fbs.dto.BookingDTO;
 import com.iht.fbs.exception.ResourceNotFoundException;
 import com.iht.fbs.model.Booking;
 import com.iht.fbs.service.BookingService;
@@ -28,54 +26,43 @@ import com.iht.fbs.service.BookingService;
 @RequestMapping("/booking")
 public class BookingController {
 	private static final Logger logger = LoggerFactory.getLogger(BookingController.class);
+ 
 	@Autowired
 	private BookingService bookingService;
 
-	@Autowired
-	private BookingAdaptor adaptor;
-
-//	@PostMapping(path = "/save")
-//	public void save(@RequestBody BookingDTO booking) {
-//		logger.info("save is calling : Booking " + booking);
-//	//	Booking position = adaptor.uiDtoToDatabaseModel(booking);
-//		// positionService.save(position);
-//		bookingService.save(adaptor.uiDtoToDatabaseModel(booking));
-//
-//	}
-	
-
 	@PostMapping(path = "/save")
 	public void save(@RequestBody Booking booking) {
-		logger.info("save is calling : Booking " + booking);
-	//	Booking position = adaptor.uiDtoToDatabaseModel(booking);
-		// positionService.save(position);
-		Booking book =	bookingService.save(booking);
-		System.out.println("BookingController.save()"+book);
+		logger.info("save is calling : Booking {,}" + booking);
+
+		Booking book = bookingService.save(booking);
+
+		logger.info("BookingController {,}" + book);
 
 	}
 
 	@GetMapping(value = "/findBookingById/{bookingId}")
-	public Booking findBookingById(@PathVariable("bookingId") Long bookingId )  throws ResourceNotFoundException {
-		logger.info("BookingController.findBookingById()" + bookingId);
+	public Booking findBookingById(@PathVariable("bookingId") Long bookingId) throws ResourceNotFoundException {
+		logger.info("BookingController.findBookingById()", bookingId);
 		return bookingService.findBookingId(bookingId);
 	}
-
-
 
 	@GetMapping(path = "/findBookingList")
 	public List<Booking> findBookingList() {
 		logger.info("BookingController.findBookingList()");
 		return bookingService.findBookingList();
 	}
+
 	@GetMapping(path = "/findBookingByUserId/{userId}")
 	public List<Booking> findBookingByUserId(@PathVariable("userId") Long userId, HttpServletRequest req) {
-		logger.info("BookingController.findBookingList()");
+		logger.info("BookingController.findBookingByUserId()" + userId);
 		return bookingService.findBookingByUserId(userId);
 	}
+
 	@DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteById(@PathVariable("id") Long id) {
 		logger.info("deleteById()" + id);
 		bookingService.deleteById(id);
 
 	}
+
 }

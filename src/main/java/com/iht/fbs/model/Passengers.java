@@ -30,6 +30,22 @@ public class Passengers implements Serializable {
 	@JoinColumn(name = "bookingId")
 	private Booking booking;
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public Long getAge() {
+		return age;
+	}
+
+	public void setAge(Long age) {
+		this.age = age;
+	}
+
 	public Long getPassengerId() {
 		return passengerId;
 	}

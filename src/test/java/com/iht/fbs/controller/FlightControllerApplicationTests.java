@@ -15,8 +15,9 @@ import org.springframework.http.ResponseEntity;
 import com.iht.fbs.FlightBookingSystemApplication;
 
 @SpringBootTest(classes = FlightBookingSystemApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class FlightControllerApplicationTests {
+ class FlightControllerApplicationTests {
 
+	
 	@Autowired
 	private TestRestTemplate restTemplate;
 
@@ -27,14 +28,23 @@ public class FlightControllerApplicationTests {
 		return "http://localhost:" + port;
 	}
 
-	 
-
 	@Test
-	public void testFindFlightList() {
+	 void testFindFlightList() {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/flight/findFlightList", HttpMethod.GET,
 				entity, String.class);
 		assertNotNull(response.getBody());
 	}
+
+//	@Test
+//	void shouldGetAllMovies() {
+//		List<Flight> dummyMovies = Stream.of(new Flight(1, 1452, "Air", "AZSX@##", 142, 11, "AC", 1, 1, new Date()))
+//				.collect(Collectors.toList());
+//		Mockito.when(repo.findAll()).thenReturn(dummyMovies);
+//
+//		List<Flight> movies = service.findFlightList();
+//		Assert.assertEquals(dummyMovies, movies);
+//	}
+
 }

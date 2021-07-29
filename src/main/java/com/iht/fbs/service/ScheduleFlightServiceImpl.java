@@ -44,14 +44,14 @@ public class ScheduleFlightServiceImpl implements ScheduleFlightService {
 
 	@Override
 	public List<ScheduledFlight> findFlightByLocation(String source, String desination) {
-		// TODO Auto-generated method stub
+
 		return scheduledFlightRepository.findFlightByLocation(source, desination);
 	}
 
 	@Override
 	@Transactional
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+
 		scheduledFlightRepository.deleteById(id);
 	}
 

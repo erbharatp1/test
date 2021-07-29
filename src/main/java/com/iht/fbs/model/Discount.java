@@ -31,4 +31,46 @@ public class Discount implements Serializable {
 	private String disCode;
 	private String discription;
 	private Double price;
+	public Discount() {
+		super();
+	}
+	
+	public Long getDiscountId() {
+		return discountId;
+	}
+
+	public void setDiscountId(Long discountId) {
+		this.discountId = discountId;
+	}
+
+	public String getDisCode() {
+		return disCode;
+	}
+
+	public void setDisCode(String disCode) {
+		this.disCode = disCode;
+	}
+
+	public String getDiscription() {
+		return discription;
+	}
+
+	public void setDiscription(String discription) {
+		this.discription = discription;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Discount [discountId=" + discountId + ", disCode=" + disCode + ", discription=" + discription
+				+ ", price=" + price + "]";
+	}
+	
 }
